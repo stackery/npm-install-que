@@ -1,0 +1,46 @@
+{
+  "name": "npm-install-que",
+  "version": "0.0.0",
+  "description": "Que up your module dependencies, and install them one-by-one.",
+  "license": "MIT",
+  "repository": "radiovisual/npm-install-que",
+  "author": {
+    "name": "Michael Wuergler",
+    "email": "wuergler@gmail.com",
+    "url": "numetriclabs.com"
+  },
+  "bin": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "npm",
+    "install",
+    "que",
+    "one",
+    "by",
+    "at",
+    "a",
+    "time"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "cross-spawn-async": "^2.1.9",
+    "native-promise-only": "^0.8.1",
+    "object-assign": "^4.0.1",
+    "pkg-up": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.11.0",
+    "xo": "^0.12.1"
+  }
+}
