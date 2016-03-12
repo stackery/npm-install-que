@@ -36,9 +36,28 @@ test('report many failed installs', async t => {
 	let status = await que(pkg);
 	status = chalk.stripColor(status);
 
+	t.false(/installed successfully/g.test(status));
 	t.true(/100% failed install/g.test(status));
 	t.true(/failed: THISMODULEWILLNEVEREXIST/g.test(status));
 	t.true(/failed: ALSOTHISMODULEWILLNEVEREXIST/g.test(status));
 	t.true(/Retry failed installs by running the following command:/g.test(status));
 	t.true(/npm install ALSOTHISMODULEWILLNEVEREXIST && npm install THISMODULEWILLNEVEREXIST/g.test(status));
+});
+
+test('no devDependencies', async t => {
+	const pkg = require('./nodevdeps.json');
+	let status = await que(pkg);
+	status = chalk.stripColor(status);
+
+	t.true(/100% installed successfully/g.test(status));
+	t.true(/installed: emtee/g.test(status));
+});
+
+test('only devDependencies', async t => {
+	const pkg = require('./onlydevdeps.json');
+	let status = await que(pkg);
+	status = chalk.stripColor(status);
+
+	t.true(/100% installed successfully/g.test(status));
+	t.true(/installed: emtee/g.test(status));
 });

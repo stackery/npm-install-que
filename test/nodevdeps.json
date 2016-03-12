@@ -1,0 +1,6 @@
+{
+  "name": "no-dev-deps-test",
+  "dependencies": {
+    "emtee": "*"
+  }
+}

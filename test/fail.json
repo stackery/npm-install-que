@@ -1,5 +1,5 @@
 {
-  "name": "error-test",
+  "name": "one-fail-test",
   "dependencies": {
     "THISMODULEWILLNEVEREXIST": "*"
   },
