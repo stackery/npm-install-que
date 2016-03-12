@@ -1,6 +1,6 @@
 {
   "name": "npm-install-que",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Que up your module dependencies, and automatically install them one-by-one.",
   "license": "MIT",
   "repository": "radiovisual/npm-install-que",
@@ -20,7 +20,7 @@
   },
   "files": [
     "index.js",
-    "cli.js"
+    "que.js"
   ],
   "keywords": [
     "cli-app",
