@@ -2,9 +2,9 @@
 
 > Que up your module dependencies, and automatically install them one-by-one.
 
-Installing dependencies one at a time allows you to keep an eye on things in case they go wrong. It also puts less
-strain on npm for large, problematic installations. Sometimes npm hangs during the install, and you have to retry the
-*entire* install all over again. To deal with that, I wrote this cli tool that attempts to install your dependencies one
+Installing dependencies one at a time allows you to keep an eye on things in case something goes wrong. It also puts less
+strain on your `npm install` for large, problematic installations. Sometimes npm hangs during the install, and you have to retry the
+*entire* install all over again. :confused: To deal with this, I wrote this cli tool that attempts to install your dependencies one
 at a time, and keeps track of the modules that failed. Doing this means that if you have to attempt a re-install, you only
 have to re-install the modules that failed.
 
