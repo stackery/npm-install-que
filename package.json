@@ -1,6 +1,6 @@
 {
   "name": "npm-install-que",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Que up your module dependencies, and automatically install them one-by-one.",
   "license": "MIT",
   "repository": "radiovisual/npm-install-que",
