@@ -1,10 +1,9 @@
 {
   "name": "success-test",
   "dependencies": {
-    "noop": "*",
-    "noop2": "*"
+    "emtee": "*"
   },
   "devDependencies": {
-    "noop3": "*"
+    "noop": "*"
   }
 }

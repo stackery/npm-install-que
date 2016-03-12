@@ -9,6 +9,15 @@ module.exports = (function () {
 	// first, get the project's package.json
 	pkgUp().then(function (filepath) {
 		console.log('installing dependencies from:', chalk.cyan(filepath));
-		que(require(filepath));
+
+		var pkg = require(filepath);
+
+		que(pkg).then(function (status) {
+			console.log(status);
+			process.exit();
+		}).catch(function (err) {
+			console.log(err);
+			process.exit();
+		});
 	});
 })();
