@@ -1,0 +1,9 @@
+{
+  "name": "many-fail-test",
+  "dependencies": {
+    "THISMODULEWILLNEVEREXIST": "*"
+  },
+  "devDependencies": {
+    "ALSOTHISMODULEWILLNEVEREXIST": "*"
+  }
+}

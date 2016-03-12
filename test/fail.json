@@ -1,0 +1,9 @@
+{
+  "name": "error-test",
+  "dependencies": {
+    "THISMODULEWILLNEVEREXIST": "*"
+  },
+  "devDependencies": {
+    "emtee": "*"
+  }
+}
