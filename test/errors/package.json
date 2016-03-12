@@ -1,9 +1,0 @@
-{
-  "name": "error-test",
-  "dependencies": {
-    "this-module-does-not-exist-AECB3D2D2": "*"
-  },
-  "devDependencies": {
-    "noop3": "*"
-  }
-}

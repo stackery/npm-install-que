@@ -1,6 +1,0 @@
-{
-  "name": "only-dev-deps-test",
-  "devDependencies": {
-    "noop3": "*"
-  }
-}
