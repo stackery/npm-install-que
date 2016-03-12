@@ -9,7 +9,9 @@
     "email": "wuergler@gmail.com",
     "url": "numetriclabs.com"
   },
-  "bin": "index.js",
+  "bin": {
+    "npm-install-que": "index.js"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
