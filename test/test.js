@@ -1,8 +1,6 @@
 import test from 'ava';
-// var spawn = require('cross-spawn-async');
 var rimraf = require('rimraf');
 var que = require('../que.js');
-// var pify = require('pify');
 var chalk = require('chalk');
 
 test.beforeEach(() => {
