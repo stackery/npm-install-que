@@ -7,7 +7,7 @@ var chalk = require('chalk');
 
 module.exports = (function () {
 	// first, get the project's package.json
-	pkgUp().then(function(filepath) {
+	pkgUp().then(function (filepath) {
 		console.log('installing dependencies from:', chalk.cyan(filepath));
 		que(require(filepath));
 	});

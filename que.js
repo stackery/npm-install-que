@@ -1,10 +1,6 @@
-'use strict';
 var objectAssign = require('object-assign');
 var spawn = require('cross-spawn-async');
 var chalk = require('chalk');
-
-// https://github.com/yeoman/yo/blob/master/lib/routes/install.js
-// http://stackoverflow.com/questions/10585683/how-do-you-edit-existing-text-and-move-the-cursor-around-in-the-terminal
 
 module.exports = function (pkg) {
 	// track the packages that failed install
@@ -26,26 +22,56 @@ module.exports = function (pkg) {
 	function que() {
 		var p = deps.pop();
 		if (p) {
-			// TODO: create a nice output message that knows how to move the cursor so that the data can be redrawn each time
-			// installing: package-name <looping animation>
-			// installing: package-name <green checkmark>|<red x>
 			install(p);
 		} else {
 			// the que is empty, report and exit
-			// TODO: create a nice output message
-			console.log('finished!');
-			console.log('successful installs: ', success.length);
-			console.log('failed installs: ', errors.length);
+			printStatus();
 			process.exit();
 		}
 	}
 
+	function printStatus() {
+		var total = success.length + errors.length;
+		var successRate = (success.length / total) * 100 + '%';
+		var failRate = (errors.length / total) * 100 + '%';
+		console.log(chalk.cyan('npm-install-que complete!'));
+
+		success.map(function (name, i) {
+			if (i === 0) {
+				console.log('\n' + chalk.green(successRate) + ' installed successfully');
+			}
+			console.log(chalk.green('installed:'), chalk.white(name), chalk.green('✔︎'));
+		});
+		errors.map(function (name, i) {
+			if (i === 0) {
+				console.log('\n' + chalk.red(failRate) + ' failed install');
+			}
+			console.log(chalk.red('failed:'), chalk.white(name.name), chalk.red('x︎'));
+		});
+
+		if (errors.length > 0) {
+			console.log(chalk.gray('\nRetry failed installs by running the following command:'));
+			console.log(retryFailedMsg());
+		}
+	}
+
+	function retryFailedMsg() {
+		var msg = '';
+		errors.map(function (name, i, a) {
+			msg += 'npm install ' + name.name;
+			if (++i !== a.length) {
+				msg += ' && ';
+			}
+		});
+		return msg;
+	}
+
 	function install(pkgName) {
 		var child = spawn('npm', ['install', pkgName], {stdio: 'inherit'});
-		console.log('installing:', pkgName);
+		console.log(chalk.white('\ninstalling:'), chalk.cyan(pkgName));
 
 		child.on('error', function (err) {
-			errors.push({name:pkgName, err:err});
+			errors.push({name: pkgName, err: err});
 			que();
 		});
 
@@ -53,7 +79,7 @@ module.exports = function (pkg) {
 			if (exitCode === 0) {
 				success.push(pkgName);
 			} else {
-				errors.push({name:pkgName, err:'exitCode: '+exitCode});
+				errors.push({name: pkgName, err: 'exitCode: ' + exitCode});
 			}
 			que();
 		});
@@ -62,5 +88,3 @@ module.exports = function (pkg) {
 	// get this [recursive] party started!
 	que();
 };
-
-
