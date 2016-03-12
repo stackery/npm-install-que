@@ -1,0 +1,10 @@
+{
+  "name": "success-test",
+  "dependencies": {
+    "noop": "*",
+    "noop2": "*"
+  },
+  "devDependencies": {
+    "noop3": "*"
+  }
+}
