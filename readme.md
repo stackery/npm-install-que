@@ -1,6 +1,6 @@
 # npm-install-que [![Build Status](https://travis-ci.org/radiovisual/npm-install-que.svg?branch=master)](https://travis-ci.org/radiovisual/npm-install-que)
 
-> Que up your module dependencies, and automatically install them one-by-one.
+> Que up your project's dependencies, and automatically install them one-by-one.
 
 Installing dependencies one at a time allows you to keep an eye on things in case something goes wrong. It also puts less
 strain on your `npm install` for large, problematic installations. Sometimes npm hangs during the install, and you have to retry the
@@ -19,7 +19,7 @@ $ npm install --global npm-install-que
 
 ## Usage
 
-Instead of `npm install`, use: 
+Instead of `npm install` to install your project dependencies, simply use:
 
 ```
 $ npm-install-que
@@ -28,7 +28,11 @@ $ npm-install-que
 ## Notes
 
 `npm-install-que` will run just like `npm install`, giving you all the same npm output you are used to. The main difference,
-of course, is that each dependency is installed one at a time, and at the end of the install process, you will get a status report. 
+of course, is that each of your project's dependencies are installed one at a time, and at the end of the install process, you will get a status report.
+
+Please note that `npm-install-que` does not accept any parameters or arguments, so it's not a full replacement for the `npm install`
+command. If you pass arguments to the `npm install` command, then you already have the ability to install dependencies one-at-a-time, so there is no need for this module
+to support command line arguments.
 
 **On Successful Installation:** You will see that each module installed without a problem:
 
@@ -45,6 +49,8 @@ will look something like:
 ```
 npm install package-name && npm install other-package-name
 ```
+
+
 
 ## License
 
