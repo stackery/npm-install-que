@@ -2,8 +2,8 @@
 'use strict';
 require('native-promise-only');
 var pkgUp = require('pkg-up');
-var que = require('./que.js');
 var chalk = require('chalk');
+var que = require('./que.js');
 
 module.exports = (function () {
 	// first, get the project's package.json

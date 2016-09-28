@@ -1,15 +1,20 @@
+import rimraf from 'rimraf';
+import chalk from 'chalk';
 import test from 'ava';
-var rimraf = require('rimraf');
-var que = require('../que.js');
-var chalk = require('chalk');
+import que from '../que.js';
+
+const goodPkg = require('./success.json');
+const failPkg = require('./fail.json');
+const manyFailPkg = require('./manyfail.json');
+const noDevsPkg = require('./nodevdeps.json');
+const onlyDevsPkg = require('./onlydevdeps.json');
 
 test.beforeEach(() => {
 	rimraf.sync('node_modules');
 });
 
 test('successfully installs one at a time', async t => {
-	const pkg = require('./success.json');
-	let status = await que(pkg);
+	let status = await que(goodPkg);
 	status = chalk.stripColor(status);
 
 	t.true(/100% installed successfully/g.test(status));
@@ -18,8 +23,7 @@ test('successfully installs one at a time', async t => {
 });
 
 test('report failed install', async t => {
-	const pkg = require('./fail.json');
-	let status = await que(pkg);
+	let status = await que(failPkg);
 	status = chalk.stripColor(status);
 
 	t.true(/50% installed successfully/g.test(status));
@@ -30,8 +34,7 @@ test('report failed install', async t => {
 });
 
 test('report many failed installs', async t => {
-	const pkg = require('./manyfail.json');
-	let status = await que(pkg);
+	let status = await que(manyFailPkg);
 	status = chalk.stripColor(status);
 
 	t.false(/installed successfully/g.test(status));
@@ -43,8 +46,7 @@ test('report many failed installs', async t => {
 });
 
 test('no devDependencies', async t => {
-	const pkg = require('./nodevdeps.json');
-	let status = await que(pkg);
+	let status = await que(noDevsPkg);
 	status = chalk.stripColor(status);
 
 	t.true(/100% installed successfully/g.test(status));
@@ -52,8 +54,7 @@ test('no devDependencies', async t => {
 });
 
 test('only devDependencies', async t => {
-	const pkg = require('./onlydevdeps.json');
-	let status = await que(pkg);
+	let status = await que(onlyDevsPkg);
 	status = chalk.stripColor(status);
 
 	t.true(/100% installed successfully/g.test(status));

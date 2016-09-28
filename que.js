@@ -1,8 +1,8 @@
 'use strict';
 
+require('native-promise-only');
 var objectAssign = require('object-assign');
 var spawn = require('cross-spawn-async');
-require('native-promise-only');
 var chalk = require('chalk');
 
 module.exports = function (pkg) {
@@ -35,20 +35,20 @@ module.exports = function (pkg) {
 		function printStatus() {
 			var message = '';
 			var total = success.length + errors.length;
-			var successRate = (success.length / total) * 100 + '%';
-			var failRate = (errors.length / total) * 100 + '%';
+			var successRate = (success.length / total) * 100;
+			var failRate = (errors.length / total) * 100;
 			message += chalk.cyan('npm-install-que complete!') + '\n';
 
-			success.map(function (name, i) {
+			success.forEach(function (name, i) {
 				if (i === 0) {
-					message += '\n' + chalk.green(successRate) + ' installed successfully\n';
+					message += '\n' + chalk.green(successRate + '%') + ' installed successfully\n';
 				}
 				message += chalk.green('installed: ') + chalk.white(name) + ' ' + chalk.green('✔︎') + '\n';
 			});
 
-			errors.map(function (name, i) {
+			errors.forEach(function (name, i) {
 				if (i === 0) {
-					message += '\n' + chalk.red(failRate) + ' failed install\n';
+					message += '\n' + chalk.red(failRate + '%') + ' failed install\n';
 				}
 				message += chalk.red('failed: ') + chalk.white(name.name) + ' ' + chalk.red('x︎') + '\n';
 			});
@@ -62,7 +62,7 @@ module.exports = function (pkg) {
 
 		function retryFailedMsg() {
 			var msg = '';
-			errors.map(function (name, i, a) {
+			errors.forEach(function (name, i, a) {
 				msg += 'npm install ' + name.name;
 				if (++i !== a.length) {
 					msg += ' && ';
