@@ -42,7 +42,7 @@ test('report many failed installs', async t => {
 	t.true(/failed: THISMODULEWILLNEVEREXIST/g.test(status));
 	t.true(/failed: ALSOTHISMODULEWILLNEVEREXIST/g.test(status));
 	t.true(/Retry failed installs by running the following command:/g.test(status));
-	t.true(/npm install ALSOTHISMODULEWILLNEVEREXIST && npm install THISMODULEWILLNEVEREXIST/g.test(status));
+	t.true(/npm install THISMODULEWILLNEVEREXIST && npm install ALSOTHISMODULEWILLNEVEREXIST/g.test(status));
 });
 
 test('no devDependencies', async t => {
