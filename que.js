@@ -23,7 +23,7 @@ module.exports = function (pkg) {
 		}
 
 		function que() {
-			var p = deps.pop();
+			var p = deps.shift();
 			if (p) {
 				install(p);
 			} else {
