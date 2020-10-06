@@ -14,7 +14,7 @@ module.exports = function (pkg) {
 		var success = [];
 
 		var mdeps = pkg.dependencies || {};
-		var ddeps = pkg.devDependencies || {};
+		var ddeps = {};
 
 		var deps = Object.keys(objectAssign(mdeps, ddeps));
 
